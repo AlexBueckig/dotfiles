@@ -1,6 +1,4 @@
 *
 !.gitignore
-!nvim/*/
-!nvim/*/*/
-!nvim/*/*/*/
-!wezterm/*
+!nvim/
+!wezterm/
