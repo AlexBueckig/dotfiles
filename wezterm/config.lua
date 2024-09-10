@@ -23,6 +23,8 @@ config = {
 		top = 0,
 		bottom = 0,
 	},
+	-- disable ligatures
+	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 	-- from: https://akos.ma/blog/adopting-wezterm/
 	hyperlink_rules = {
 		-- Matches: a URL in parens: (URL)
