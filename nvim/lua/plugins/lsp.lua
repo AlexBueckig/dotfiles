@@ -109,7 +109,26 @@ return { -- LSP Configuration & Plugins
     local servers = {
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      ts_ls = {},
+      ts_ls = {
+        init_options = {
+          preferences = {
+            disableSuggestions = true,
+          },
+        },
+        commands = {
+          OrganizeImports = {
+            function()
+              vim.lsp.buf.execute_command {
+                command = '_typescript.organizeImports',
+                arguments = {
+                  { uri = vim.uri_from_bufnr(0) },
+                },
+              }
+            end,
+            description = 'Typescript: Organize Imports',
+          },
+        },
+      },
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
@@ -138,38 +157,22 @@ return { -- LSP Configuration & Plugins
       },
       dockerls = {},
       docker_compose_language_service = {},
-      pylsp = {
+      basedpyright = {
+        -- Config options: https://github.com/DetachHead/basedpyright/blob/main/docs/settings.md
         settings = {
-          pylsp = {
-            plugins = {
-              pyflakes = { enabled = false },
-              pycodestyle = { enabled = false },
-              autopep8 = { enabled = false },
-              yapf = { enabled = false },
-              mccabe = { enabled = false },
-              pylsp_mypy = { enabled = false },
-              pylsp_black = { enabled = false },
-              pylsp_isort = { enabled = false },
+          basedpyright = {
+            disableOrganizeImports = true, -- Using Ruff's import organizer
+            disableLanguageServices = false,
+            analysis = {
+              ignore = { '*' },                 -- Ignore all files for analysis to exclusively use Ruff for linting
+              typeCheckingMode = 'off',
+              diagnosticMode = 'openFilesOnly', -- Only analyze open files
+              useLibraryCodeForTypes = true,
+              autoImportCompletions = true,     -- whether pyright offers auto-import completions
             },
           },
         },
       },
-      -- basedpyright = {
-      --   -- Config options: https://github.com/DetachHead/basedpyright/blob/main/docs/settings.md
-      --   settings = {
-      --     basedpyright = {
-      --       disableOrganizeImports = true, -- Using Ruff's import organizer
-      --       disableLanguageServices = false,
-      --       analysis = {
-      --         ignore = { '*' },                 -- Ignore all files for analysis to exclusively use Ruff for linting
-      --         typeCheckingMode = 'off',
-      --         diagnosticMode = 'openFilesOnly', -- Only analyze open files
-      --         useLibraryCodeForTypes = true,
-      --         autoImportCompletions = true,     -- whether pyright offers auto-import completions
-      --       },
-      --     },
-      --   },
-      -- },
       ruff = {
         -- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
         -- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218

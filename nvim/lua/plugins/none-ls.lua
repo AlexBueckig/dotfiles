@@ -18,6 +18,7 @@ local plugin = {
         'stylua',   -- lua formatter
         'eslint_d', -- ts/js linter
         'shfmt',
+        'djlint',
       },
       -- auto-install configured formatters & linters (with null-ls)
       automatic_installation = true,
@@ -25,9 +26,11 @@ local plugin = {
 
     local sources = {
       diagnostics.checkmake,
-      formatting.prettier.with { filetypes = { 'html', 'json', 'yaml', 'markdown' } },
+      diagnostics.djlint,
+      formatting.prettier,
       formatting.stylua,
       formatting.shfmt.with { args = { '-i', '4' } },
+      formatting.djlint,
     }
 
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
