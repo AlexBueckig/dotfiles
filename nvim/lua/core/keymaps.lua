@@ -76,9 +76,14 @@ vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
 -- Move text up and down
-vim.keymap.set({ 'v', 'n', 'i' }, '<A-j>', ':m .+1<CR>==', opts)
-vim.keymap.set({ 'v', 'n', 'i' }, '<A-k>', ':m .-2<CR>==', opts)
+vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', opts)
+vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', opts)
 
+vim.keymap.set('i', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
+vim.keymap.set('i', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
+
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", opts)
 -- Keep last yanked when pasting
 vim.keymap.set('v', 'p', '"_dP', opts)
 
