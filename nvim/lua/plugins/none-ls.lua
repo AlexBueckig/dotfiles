@@ -7,7 +7,7 @@ local plugin = {
   },
   config = function()
     local null_ls = require 'null-ls'
-    local formatting = null_ls.builtins.formatting   -- to setup formatters
+    local formatting = null_ls.builtins.formatting -- to setup formatters
     local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
     -- list of formatters & linters for mason to install
@@ -15,10 +15,11 @@ local plugin = {
       ensure_installed = {
         'checkmake',
         'prettier', -- ts/js formatter
-        'stylua',   -- lua formatter
+        'stylua', -- lua formatter
         'eslint_d', -- ts/js linter
         'shfmt',
         'djlint',
+        'black',
       },
       -- auto-install configured formatters & linters (with null-ls)
       automatic_installation = true,
@@ -31,6 +32,7 @@ local plugin = {
       formatting.stylua,
       formatting.shfmt.with { args = { '-i', '4' } },
       formatting.djlint,
+      formatting.black,
     }
 
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
