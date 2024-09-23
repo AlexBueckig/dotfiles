@@ -1,7 +1,1 @@
-/*
-!.gitignore
-!nvim/
-!wezterm/
-!tmux
-tmux/plugins
-!kanata
+.config/tmux/plugins
