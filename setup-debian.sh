@@ -26,6 +26,15 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     fi
 fi
 
+# Install zoxide
+if ! command -v "zoxide"; then
+    read -p "zoxide does not exist. Install? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+    fi
+fi
+
 # Install fzf
 if ! command -v "fzf"; then
     read -p "fzf does not exist. Install? (y/n) " -n 1 -r
