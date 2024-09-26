@@ -42,7 +42,7 @@ if ! command -v "kanata"; then
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         curl -o- -L "https://github.com/jtroo/kanata/releases/download/v$kanata_version/kanata" | sudo tar -xz -C /usr/local/bin/
-        sudo chmod +x /usr/local/bin/fzf
+        sudo chmod +x /usr/local/bin/kanata
         # add systemd
     fi
 fi
