@@ -22,5 +22,5 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-setup.sh
+setup-debian.sh
 
