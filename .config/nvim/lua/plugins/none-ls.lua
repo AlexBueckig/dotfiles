@@ -14,9 +14,8 @@ local plugin = {
     require('mason-null-ls').setup {
       ensure_installed = {
         'checkmake',
-        'prettier', -- ts/js formatter
-        'stylua',   -- lua formatter
-        'eslint_d', -- ts/js linter
+        'prettierd', -- ts/js formatter
+        'stylua',    -- lua formatter
         'shfmt',
         'djlint',
         'mypy',
@@ -30,7 +29,7 @@ local plugin = {
       diagnostics.checkmake,
       diagnostics.djlint,
       diagnostics.mypy,
-      formatting.prettier,
+      formatting.prettierd,
       formatting.stylua,
       formatting.shfmt.with { args = { '-i', '4' } },
       formatting.djlint,

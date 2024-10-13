@@ -109,6 +109,7 @@ return { -- LSP Configuration & Plugins
     local servers = {
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+      eslint = {},
       ts_ls = {
         init_options = {
           preferences = {
