@@ -25,22 +25,11 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup({
-  require 'plugins.themes.catppuccin',
-  require 'plugins.alpha',
-  require 'plugins.autocomplete',
-  require 'plugins.bufferline',
-  require 'plugins.comment',
-  require 'plugins.gitsigns',
-  require 'plugins.indent-blankline',
-  require 'plugins.lsp',
-  require 'plugins.lualine',
-  require 'plugins.misc',
-  require 'plugins.neo-tree',
-  require 'plugins.none-ls',
-  require 'plugins.telescope',
-  require 'plugins.treesitter',
-}, {
+require('lazy').setup {
+  spec = {
+    import = 'plugins',
+  },
+  install = { colorscheme = { 'catppuccin' } },
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons otherwise define a unicode icons table
@@ -60,4 +49,4 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
-})
+}
