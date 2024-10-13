@@ -7,6 +7,14 @@ local plugins = {
   {
     -- autoclose tags
     'windwp/nvim-ts-autotag',
+    ft = {
+      'html',
+      'javascript',
+      'javascriptreact',
+      'typescript',
+      'typescriptreact',
+    },
+    config = true,
   },
   {
     -- detect tabstop and shiftwidth automatically
@@ -29,7 +37,6 @@ local plugins = {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     config = true,
-    opts = {},
   },
   {
     -- Highlight todo, notes, etc in comments
@@ -41,9 +48,7 @@ local plugins = {
   {
     -- high-performance color highlighter
     'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup()
-    end,
+    config = true,
   },
   {
     'mbbill/undotree',
