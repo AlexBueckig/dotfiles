@@ -161,9 +161,13 @@ return { -- LSP Configuration & Plugins
       pyright = {
         settings = {
           python = {
+            disableOrganizeImports = true, -- Using Ruff's import organizer
+            disableLanguageServices = false,
             analysis = {
-              typeCheckingMode = 'off',
-              diagnosticMode = 'off',
+              ignore = { '*' },                 -- Ignore all files for analysis to exclusively use Ruff for linting
+              diagnosticMode = 'openFilesOnly', -- Only analyze open files
+              useLibraryCodeForTypes = true,
+              autoImportCompletions = true,     -- whether pyright offers auto-import completions
             },
           },
         },
