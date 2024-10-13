@@ -28,7 +28,12 @@ local plugin = {
     local sources = {
       diagnostics.checkmake,
       diagnostics.djlint,
-      diagnostics.mypy,
+      -- diagnostics.mypy.with {
+      --   extra_args = function()
+      --     local virtual = os.getenv 'VIRTUAL_ENV' or os.getenv 'CONDA_PREFIX' or '/usr'
+      --     return { '--python-executable', virtual .. '/bin/python' }
+      --   end,
+      -- },
       formatting.prettierd,
       formatting.stylua,
       formatting.shfmt.with { args = { '-i', '4' } },

@@ -158,7 +158,16 @@ return { -- LSP Configuration & Plugins
       },
       dockerls = {},
       docker_compose_language_service = {},
-      pyright = {},
+      pyright = {
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = 'off',
+              diagnosticMode = 'off',
+            },
+          },
+        },
+      },
       ruff = {
         -- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
         -- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218
