@@ -164,10 +164,11 @@ return { -- LSP Configuration & Plugins
             disableOrganizeImports = true, -- Using Ruff's import organizer
             disableLanguageServices = false,
             analysis = {
-              ignore = { '*' },                 -- Ignore all files for analysis to exclusively use Ruff for linting
-              diagnosticMode = 'openFilesOnly', -- Only analyze open files
+              ignore = { '*' },       -- Ignore all files for analysis to exclusively use Ruff for linting
+              diagnosticMode = 'off', -- Only analyze open files
+              typeCheckingMode = 'off',
               useLibraryCodeForTypes = true,
-              autoImportCompletions = true,     -- whether pyright offers auto-import completions
+              autoImportCompletions = true, -- whether pyright offers auto-import completions
             },
           },
         },
