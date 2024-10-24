@@ -104,3 +104,19 @@ alias vimdiff="nvim -d"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+alias sp='source ./.venv/bin/activate'
+
+PATH=$PATH:/snap/bin:$HOME/.local/bin
+
+# Android SDK
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/build-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+# Android Studio
+export ANDROID_STUDIO=$HOME/Code/android-studio
+export PATH=$PATH:$ANDROID_STUDIO
