@@ -36,14 +36,12 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   overflow = 'hidden'
 
   [[blocks.segments]]
-    type = 'executiontime'
-    style = 'plain'
-    foreground = 'yellow'
-    background = 'transparent'
-    template = '{{ .FormattedMs }}'
+    type = 'python'
+    template = ' <#ffbc03></> {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }}{{ end }}{{ end }}'
 
-    [blocks.segments.properties]
-      threshold = 5000
+  [[blocks.segments]]
+    type = 'node'
+    template = ' <#6CA35E></> {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}'
 
 [[blocks]]
   type = 'prompt'
