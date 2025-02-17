@@ -120,3 +120,15 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 # Android Studio
 export ANDROID_STUDIO=$HOME/Code/android-studio
 export PATH=$PATH:$ANDROID_STUDIO
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Restart your shell for the changes to take effect.
+
+# Load pyenv-virtualenv automatically by adding
+# the following to ~/.bashrc:
+
+eval "$(pyenv virtualenv-init -)"

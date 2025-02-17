@@ -21,9 +21,9 @@ local plugins = {
       dap.listeners.after.event_initialized['dapui_config'] = function()
         dapui.open()
       end
-      dap.listeners.after.event_terminated['dapui_config'] = function()
-        dapui.close()
-      end
+      -- dap.listeners.after.event_terminated['dapui_config'] = function()
+      --   dapui.close()
+      -- end
       dap.listeners.after.event_exited['dapui_config'] = function()
         dapui.close()
       end
@@ -43,9 +43,13 @@ local plugins = {
       table.insert(configs, {
         type = 'python',
         request = 'launch',
-        name = 'DAP Django',
+        name = 'Django with arguments',
         program = vim.loop.cwd() .. '/manage.py',
-        args = { 'runserver', '--noreload' },
+        args = function()
+          -- 'runserver', '--noreload',
+          local args_string = vim.fn.input 'Arguments: '
+          return vim.split(args_string, ' ')
+        end,
         justMyCode = true,
         django = true,
         console = 'integratedTerminal',
