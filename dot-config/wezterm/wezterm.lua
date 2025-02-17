@@ -3,6 +3,6 @@ local config = require("config")
 require("events")
 
 -- Apply color scheme based on the WEZTERM_THEME environment variable
-config.color_scheme = "Tokyo Night"
+config.color_scheme = "Tokyo Night Storm"
 
 return config
