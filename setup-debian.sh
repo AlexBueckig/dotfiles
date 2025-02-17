@@ -66,4 +66,4 @@ if ! command -v "kanata"; then
 fi
 
 # Use stow to create symlinks
-stow -v -t ~/ .
+stow -v --dotfiles -t ~/ .
