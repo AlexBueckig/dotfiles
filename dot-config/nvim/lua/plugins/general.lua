@@ -17,4 +17,11 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+  {
+    "crnvl96/lazydocker.nvim",
+    event = "VeryLazy",
+    opts = {
+      { "<leader>ld", "<Cmd>lua LazyDocker.toggle()<CR>", mode = { "n", "t" }, desc = "Toggle Lazydocker" },
+    },
+  },
 }

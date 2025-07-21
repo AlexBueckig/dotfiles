@@ -81,6 +81,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
 export EDITOR=nvim
 
 # set PATH so it includes user's private bin if it exists
@@ -104,7 +109,19 @@ alias vimdiff="nvim -d"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-alias sp='source ./.venv/bin/activate'
+activate_venv() {
+  if [ -d .venv/ ]; then
+    source ./.venv/bin/activate
+    return
+  fi
+  if [ -d venv/ ]; then
+    source ./venv/bin/activate
+    return
+  fi
+  echo "No venv found in current directory"
+}
+
+alias s=activate_venv
 
 PATH=$PATH:/snap/bin:$HOME/.local/bin
 
@@ -120,3 +137,17 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 # Android Studio
 export ANDROID_STUDIO=$HOME/Code/android-studio
 export PATH=$PATH:$ANDROID_STUDIO
+
+export FZF_BUILTIN_TMUX="on"
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+alias lzd='lazydocker'
+alias lzp='DOCKER_HOST=unix:///run/user/1000/podman/podman.sock lazydocker'
