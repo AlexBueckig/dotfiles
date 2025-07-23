@@ -10,7 +10,7 @@ config = {
 	automatically_reload_config = true,
 	window_close_confirmation = "NeverPrompt",
 	adjust_window_size_when_changing_font_size = false,
-	window_decorations = "RESIZE",
+	window_decorations = "NONE",
 	check_for_updates = false,
 	use_fancy_tab_bar = false,
 	tab_bar_at_bottom = false,
@@ -20,8 +20,8 @@ config = {
 	window_padding = {
 		left = 3,
 		right = 3,
-		top = 0,
-		bottom = 0,
+		top = 3,
+		bottom = 3,
 	},
 	-- disable ligatures
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
