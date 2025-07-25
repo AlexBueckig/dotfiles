@@ -156,8 +156,8 @@ export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
 
 # lazydocker / lazypodman
 alias lzd='lazydocker'
-alias lzp='DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock lazydocker'
-alias lazypodman='DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock lazydocker'
+alias lzp='lazydocker'
+alias lazypodman='lazydocker'
 
 # Devpod
 export DEVPOD_DISABLE_TELEMETRY=true
