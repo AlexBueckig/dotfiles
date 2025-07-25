@@ -161,3 +161,4 @@ alias lazypodman='lazydocker'
 
 # Devpod
 export DEVPOD_DISABLE_TELEMETRY=true
+alias dp=devpod
