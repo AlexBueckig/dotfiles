@@ -24,4 +24,8 @@ return {
       { "<leader>ld", "<Cmd>lua LazyDocker.toggle()<CR>", mode = { "n", "t" }, desc = "Toggle Lazydocker" },
     },
   },
+  {
+    "tpope/vim-surround",
+    event = "VeryLazy",
+  },
 }
