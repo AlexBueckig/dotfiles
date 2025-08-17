@@ -18,8 +18,8 @@ o.swapfile = false
 o.expandtab = true
 o.shiftwidth = 2
 o.smartindent = true
-o.tabstop = 2
-o.softtabstop = 2
+o.tabstop = 4
+o.softtabstop = 4
 
 opt.fillchars = { eob = " " }
 o.ignorecase = true
@@ -48,7 +48,7 @@ opt.whichwrap:append("<>[]hl")
 
 -- Show whitespace characters
 vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", space = "⋅" }
 
 -- Set the default border for all floating windows
 vim.opt.winborder = "rounded"
