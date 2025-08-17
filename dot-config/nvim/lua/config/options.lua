@@ -12,6 +12,7 @@ o.splitkeep = "screen"
 o.clipboard = "unnamedplus"
 o.cursorline = true
 o.cursorlineopt = "number"
+o.swapfile = false
 
 -- Indenting
 o.expandtab = true
