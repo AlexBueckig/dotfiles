@@ -86,21 +86,21 @@ return {
 					[vim.diagnostic.severity.HINT] = "󰌶 ",
 				},
 			},
-			virtual_lines = {
-				current_line = true,
-			},
+			-- virtual_lines = {
+			-- 	current_line = true,
+			-- },
 			virtual_text = {
 				current_line = false,
 				spacing = 2,
-				-- format = function(diagnostic)
-				-- 	local diagnostic_message = {
-				-- 		[vim.diagnostic.severity.ERROR] = diagnostic.message,
-				-- 		[vim.diagnostic.severity.WARN] = diagnostic.message,
-				-- 		[vim.diagnostic.severity.INFO] = diagnostic.message,
-				-- 		[vim.diagnostic.severity.HINT] = diagnostic.message,
-				-- 	}
-				-- 	return diagnostic_message[diagnostic.severity]
-				-- end,
+				format = function(diagnostic)
+					local diagnostic_message = {
+						[vim.diagnostic.severity.ERROR] = diagnostic.message,
+						[vim.diagnostic.severity.WARN] = diagnostic.message,
+						[vim.diagnostic.severity.INFO] = diagnostic.message,
+						[vim.diagnostic.severity.HINT] = diagnostic.message,
+					}
+					return diagnostic_message[diagnostic.severity]
+				end,
 			},
 		})
 
