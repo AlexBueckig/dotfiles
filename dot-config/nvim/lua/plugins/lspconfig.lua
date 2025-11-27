@@ -131,13 +131,16 @@ return {
 					},
 				},
 			},
+			tailwindcss = {},
 			bashls = {},
 			lua_ls = {},
 			marksman = {},
 			vtsls = {
 				filetypes = { "typescript", "typescriptreact" },
 			},
+			jsonls = {},
 			cssls = {},
+			css_variables = {},
 		}
 
 		if vim.fn.executable("go") == 1 then
