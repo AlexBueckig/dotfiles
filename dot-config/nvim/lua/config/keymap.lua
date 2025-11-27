@@ -47,7 +47,6 @@ map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = tru
 map("n", "<leader>bb", "<C-^>", { desc = "Switch to alternate buffer" })
 map("n", "<leader>bn", "<CMD>bnext<CR>", { desc = "Next buffer" })
 map("n", "<leader>bp", "<CMD>bprevious<CR>", { desc = "Previous buffer" })
-map("n", "<leader>bd", "<CMD>bdelete<CR>", { desc = "Previous buffer" })
 map("n", "<S-h>", "<CMD>bprevious<CR>", { desc = "Prev Buffer" })
 map("n", "<S-l>", "<CMD>bnext<CR>", { desc = "Next Buffer" })
 
