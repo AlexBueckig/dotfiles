@@ -23,27 +23,28 @@ return {
 				vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc, silent = true })
 			end
 
-		vim.keymap.set("n", "[c", function()
-			if vim.wo.diff then
-				return "[c"
-			end
-			vim.schedule(function()
-				require("gitsigns").prev_hunk()
-			end)
-			return "<Ignore>"
-		end, { noremap = true, silent = true, desc = "Jump to prev hunk" })
-		vim.keymap.set("n", "<leader>rh", function()
-			require("gitsigns").reset_hunk()
-		end, { noremap = true, silent = true, desc = "Reset hunk" })
+			vim.keymap.set("n", "[c", function()
+				if vim.wo.diff then
+					return "[c"
+				end
+				vim.schedule(function()
+					require("gitsigns").prev_hunk()
+				end)
+				return "<Ignore>"
+			end, { noremap = true, silent = true, desc = "Jump to prev hunk" })
+			vim.keymap.set("n", "<leader>rh", function()
+				require("gitsigns").reset_hunk()
+			end, { noremap = true, silent = true, desc = "Reset hunk" })
 
-		vim.keymap.set("n", "<leader>ph", function()
-			require("gitsigns").preview_hunk()
-		end, { noremap = true, silent = true, desc = "Preview hunk" })
-		-- vim.keymap.set("n", "<leader>gl", function()
-		-- 	package.loaded.gitsigns.blame_line()
-		-- end, { noremap = true, silent = true, desc = "Blame line" })
-		vim.keymap.set("n", "<leader>td", function()
-			require("gitsigns").toggle_deleted()
-		end, { noremap = true, silent = true, desc = "Toggle deleted" })
-	end,
+			vim.keymap.set("n", "<leader>ph", function()
+				require("gitsigns").preview_hunk()
+			end, { noremap = true, silent = true, desc = "Preview hunk" })
+			-- vim.keymap.set("n", "<leader>gl", function()
+			-- 	package.loaded.gitsigns.blame_line()
+			-- end, { noremap = true, silent = true, desc = "Blame line" })
+			vim.keymap.set("n", "<leader>td", function()
+				require("gitsigns").toggle_deleted()
+			end, { noremap = true, silent = true, desc = "Toggle deleted" })
+		end,
+	},
 }
