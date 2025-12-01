@@ -1,33 +1,27 @@
 return {
 	"lewis6991/gitsigns.nvim",
-	config = function()
-		require("gitsigns").setup({
-			-- See `:help gitsigns.txt`
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-			},
-			signs_staged = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-			},
-		})
+	opts = {
+		signs = {
+			add = { text = "▎" },
+			change = { text = "▎" },
+			delete = { text = "" },
+			topdelete = { text = "" },
+			changedelete = { text = "▎" },
+			untracked = { text = "▎" },
+		},
+		signs_staged = {
+			add = { text = "▎" },
+			change = { text = "▎" },
+			delete = { text = "" },
+			topdelete = { text = "" },
+			changedelete = { text = "▎" },
+		},
+		on_attach = function(buffer)
+			local gs = package.loaded.gitsigns
 
-		vim.keymap.set("n", "]c", function()
-			if vim.wo.diff then
-				return "]c"
+			local function map(mode, l, r, desc)
+				vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc, silent = true })
 			end
-			vim.schedule(function()
-				require("gitsigns").next_hunk()
-			end)
-			return "<Ignore>"
-		end, { noremap = true, silent = true, desc = "Jump to next hunk" })
 
 		vim.keymap.set("n", "[c", function()
 			if vim.wo.diff then

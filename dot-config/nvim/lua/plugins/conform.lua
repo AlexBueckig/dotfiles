@@ -1,7 +1,6 @@
 return {
 	"stevearc/conform.nvim",
-	-- formatting
-    loading = "VeryLazy",
+	event = "InsertEnter",
 	keys = {
 		{
 			"<leader>fm",
@@ -24,13 +23,13 @@ return {
 				"ruff_organize_imports",
 			},
 			scss = { "prettierd", "prettier", "biome-check", stop_after_first = true },
-			css = { "prettierd", "prettier", "biome-check",stop_after_first = true },
-			javascript = { "prettierd", "prettier", "biome-check",stop_after_first = true },
-			javascriptreact = { "prettierd", "prettier", "biome-check",stop_after_first = true },
-			typescript = { "prettierd", "prettier", "biome-check",stop_after_first = true },
-			typescriptreact = { "prettierd", "prettier", "biome-check",stop_after_first = true },
-			html = { "html_beautify", "prettierd", "prettier", "biome-check",stop_after_first = true },
-            htmldjango = { "djlint" },
+			css = { "prettierd", "prettier", "biome-check", stop_after_first = true },
+			javascript = { "prettierd", "prettier", "biome-check", stop_after_first = true },
+			javascriptreact = { "prettierd", "prettier", "biome-check", stop_after_first = true },
+			typescript = { "prettierd", "prettier", "biome-check", stop_after_first = true },
+			typescriptreact = { "prettierd", "prettier", "biome-check", stop_after_first = true },
+			html = { "html_beautify", "prettierd", "prettier", "biome-check", stop_after_first = true },
+			htmldjango = { "djlint" },
 			--javascript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
 			--javascriptreact = { "biome-check", "prettierd", "prettier", stop_after_first = true },
 			--typescript = { "biome-check", "prettierd", "prettier", stop_after_first = true },
