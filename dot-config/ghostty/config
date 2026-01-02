@@ -50,8 +50,8 @@
 
 theme = TokyoNight Moon
 
-window-padding-x = 4
-window-padding-y = 4
+window-padding-x = 8
+window-padding-y = 6
 # maximize = true
 gtk-titlebar-hide-when-maximized = true
 
