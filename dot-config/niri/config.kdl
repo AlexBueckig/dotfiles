@@ -5,8 +5,6 @@
 
 include "general.kdl"
 include "inputs.kdl"
-// available in next release
-// include optional=true "output.kdl"
 include "output.kdl"
 include "startup.kdl"
 include "layout.kdl"
