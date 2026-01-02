@@ -42,6 +42,17 @@
         "widgets": {
             "center": [
                 {
+                    "customFont": "",
+                    "formatHorizontal": "dddd dd. MMM, HH:mm",
+                    "formatVertical": "HH mm - dd MM",
+                    "id": "Clock",
+                    "tooltipFormat": "HH:mm ddd, MMM dd",
+                    "useCustomFont": false,
+                    "usePrimaryColor": false
+                }
+            ],
+            "left": [
+                {
                     "characterCount": 2,
                     "colorizeIcons": false,
                     "enableScrollWheel": true,
@@ -53,9 +64,7 @@
                     "showApplications": false,
                     "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
-                }
-            ],
-            "left": [
+                },
                 {
                     "colorizeIcons": false,
                     "hideMode": "hidden",
@@ -129,15 +138,6 @@
                     "icon": "settings",
                     "id": "ControlCenter",
                     "useDistroLogo": false
-                },
-                {
-                    "customFont": "",
-                    "formatHorizontal": "dddd dd. MMM, HH:mm",
-                    "formatVertical": "HH mm - dd MM",
-                    "id": "Clock",
-                    "tooltipFormat": "HH:mm ddd, MMM dd",
-                    "useCustomFont": false,
-                    "usePrimaryColor": false
                 }
             ]
         }
