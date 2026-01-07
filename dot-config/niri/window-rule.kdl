@@ -42,3 +42,17 @@ window-rule {
     clip-to-geometry true
 }
 
+
+// Make the wallpaper stationary, rather than moving with workspaces.
+layer-rule {
+    match namespace="^noctalia-overview"
+    place-within-backdrop true
+}
+
+// Optionally, disable the workspace shadows in the overview.
+overview {
+    workspace-shadow {
+        on
+    }
+}
+
