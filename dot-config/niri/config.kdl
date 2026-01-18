@@ -3,6 +3,7 @@
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
 
+include "environment.kdl"
 include "general.kdl"
 include "inputs.kdl"
 include "output.kdl"
