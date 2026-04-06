@@ -2,6 +2,7 @@ local plugin = {
 	"linux-cultist/venv-selector.nvim",
 	dependencies = {
 		"neovim/nvim-lspconfig",
+		{ "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } }, -- optional: you can also use fzf-lua, snacks, mini-pick instead.
 	},
 	ft = "python", -- Load when opening Python files
 	keys = {
@@ -13,9 +14,7 @@ local plugin = {
 			-- 	command = "fd --no-ignore --type symlink --hidden --full-path '\\.?venv.*python$' ~/Code",
 			-- },
 		}, -- if you add your own searches, they go here.
-		options = {
-			picker = "snacks",
-		}, -- if you add plugin options, they go here.
+		options = {}, -- if you add plugin options, they go here.
 	},
 }
 
