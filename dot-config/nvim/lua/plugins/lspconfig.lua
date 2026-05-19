@@ -7,6 +7,7 @@ local plugin = {
 			"basedpyright",
 			"eslint",
 			"html",
+			"ty",
 			-- "ty",
 			"lua_ls",
 			"bashls",
