@@ -7,7 +7,6 @@ local plugin = {
 			"basedpyright",
 			"eslint",
 			"html",
-			"ty",
 			-- "ty",
 			"lua_ls",
 			"bashls",
@@ -24,6 +23,7 @@ local plugin = {
 			"ruff",
 			"prettierd",
 			"biome",
+			"black",
 		},
 	},
 	dependencies = {
