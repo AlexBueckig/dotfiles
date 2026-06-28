@@ -106,7 +106,22 @@ return {
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		local servers = {
-			basedpyright = {},
+			basedpyright = {
+				settings = {
+					python = {
+						disableOrganizeImports = true, -- Using Ruff's import organizer
+						disableLanguageServices = false,
+						analysis = {
+							ignore = { "*" }, -- Ignore all files for analysis to exclusively use Ruff for linting
+							diagnosticMode = "off", -- Only analyze open files
+							typeCheckingMode = "off",
+							useLibraryCodeForTypes = true,
+							autoImportCompletions = true, -- whether pyright offers auto-import completions
+						},
+					},
+				},
+			},
+			eslint = {},
 			bashls = {},
 			lua_ls = {},
 			marksman = {},
