@@ -22,8 +22,8 @@ map("n", "<C-s>", "<cmd> w <CR>", opts)
 map("n", "<leader>sn", "<cmd>noautocmd w <CR>", opts)
 
 -- Vertical scroll and center
-map("n", "<C-d>", "<C-d>zz", opts)
-map("n", "<C-u>", "<C-u>zz", opts)
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
 -- Find and center
 map("n", "n", "nzzzv")
