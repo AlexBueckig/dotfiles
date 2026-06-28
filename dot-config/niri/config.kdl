@@ -15,5 +15,4 @@ include "animations.kdl"
 include "gestures.kdl"
 
 // available in next release
-// include optional=true "custom.kdl"
-include "custom.kdl"
+include optional=true "custom.kdl"
