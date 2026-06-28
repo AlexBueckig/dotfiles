@@ -11,6 +11,7 @@ include "layout.kdl"
 include "window-rule.kdl"
 include "binds.kdl"
 include "animations.kdl"
+include "gestures.kdl"
 
 // available in next release
 // include optional=true "custom.kdl"
