@@ -35,6 +35,3 @@
     position x=1280 y=0
 }
 
-// available in next release
-// include optional=true "output-custom.kdl"
-include "output-custom.kdl"
