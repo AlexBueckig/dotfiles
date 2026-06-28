@@ -40,12 +40,5 @@ if ! command -v "lazygit"; then
 	sudo chmod +x /usr/local/bin/lazygit
 fi
 
-# Install stow
-if ! command -v "stow"; then
-	echo "Installing stow..."
-	curl -o- -L "http://ftp.gnu.org/gnu/stow/stow-latest.tar.gz" | sudo tar -xz -C /tmp
-	/tmp/stow-2.4.1/configure && make -C /tmp/stow-2.4.1/ install
-fi
-
 # Use stow to create symlinks
 stow -v --dotfiles -t ~/ .
