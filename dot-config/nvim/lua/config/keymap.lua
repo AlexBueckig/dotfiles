@@ -37,19 +37,19 @@ map("i", "<C-l>", "<Right>", { desc = "move right" })
 map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 
--- Navigate visual lines
-map({ "n", "x" }, "j", "gj", { desc = "Navigate down (visual line)" })
-map({ "n", "x" }, "k", "gk", { desc = "Navigate up (visual line)" })
-map({ "n", "x" }, "<Down>", "gj", { desc = "Navigate down (visual line)" })
-map({ "n", "x" }, "<Up>", "gk", { desc = "Navigate up (visual line)" })
-map("i", "<Down>", "<C-\\><C-o>gj", { desc = "Navigate down (visual line)" })
-map("i", "<Up>", "<C-\\><C-o>gk", { desc = "Navigate up (visual line)" })
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
 -- Navigating buffers
 map("n", "<leader>bb", "<C-^>", { desc = "Switch to alternate buffer" })
-map("n", "<leader>bn", ":bnext<cr>", { desc = "Next buffer" })
-map("n", "<leader>bp", ":bprevious<cr>", { desc = "Previous buffer" })
-map("n", "<leader>bd", ":bdelete<cr>", { desc = "Previous buffer" })
+map("n", "<leader>bn", "<CMD>bnext<CR>", { desc = "Next buffer" })
+map("n", "<leader>bp", "<CMD>bprevious<CR>", { desc = "Previous buffer" })
+map("n", "<leader>bd", "<CMD>bdelete<CR>", { desc = "Previous buffer" })
+map("n", "<S-h>", "<CMD>bprevious<CR>", { desc = "Prev Buffer" })
+map("n", "<S-l>", "<CMD>bnext<CR>", { desc = "Next Buffer" })
 
 -- Ctrl-L redraws the screen by default. Now it will also toggle search highlighting.
 map("n", "<C-l>", ":set hlsearch!<cr><C-l>", { desc = "Toggle search highlighting" })
@@ -59,11 +59,6 @@ map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open floating diagnos
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
-
--- formatting
-map({ "n", "x" }, "<leader>fm", function()
-	require("conform").format({ lsp_format = "fallback" })
-end, { desc = "format document" })
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
@@ -93,3 +88,28 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- Keep last yanked when pasting
 map("v", "p", '"_dP', opts)
+
+-- filetype detect
+map("n", "<leader>fd", "<CMD>filetype detect<CR>", { desc = "[F]iletype [D]etect" })
+
+-- better indenting
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+-- commenting
+map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
+map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+
+-- lazy
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- new file
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
+map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search Result" })
+map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
+map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
