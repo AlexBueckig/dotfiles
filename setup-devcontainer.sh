@@ -27,7 +27,7 @@ fi
 # Install fzf
 if ! command -v "fzf"; then
 	echo "Installing fzf..."
-	fzf_url=$(curl -s https://api.github.com/repos/junegunn/fzf/releases/latest | jq -r -c ' .assets | .[] | select( .browser_download_url | contains("linux_x86_64")) | .browser_download_url')
+	fzf_url=$(curl -s https://api.github.com/repos/junegunn/fzf/releases/latest | jq -r -c ' .assets | .[] | select( .browser_download_url | contains("linux_amd64")) | .browser_download_url')
 	curl -o- -L $fzf_url | sudo tar -xz -C /usr/local/bin/
 	sudo chmod +x /usr/local/bin/fzf
 fi
