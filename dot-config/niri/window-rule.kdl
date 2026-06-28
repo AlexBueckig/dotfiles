@@ -18,7 +18,7 @@ window-rule {
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    match app-id=r#"zen-bin$"# title="^Picture-in-Picture$"
+    match app-id="zen" title="^Picture-in-Picture$"
     match app-id=r#"vivaldi$"# title="^Picture-in-Picture$"
     open-floating true
 }
@@ -43,7 +43,7 @@ window-rule {
 }
 
 
-// Make the wallpaper stationary, rather than moving with workspaces.
+// Move noctalia overview wallpaper into backdrop
 layer-rule {
     match namespace="^noctalia-overview"
     place-within-backdrop true
