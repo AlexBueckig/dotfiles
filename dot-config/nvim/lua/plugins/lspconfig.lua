@@ -149,6 +149,7 @@ return {
 			"stylua", -- Used to format Lua code
 			"ruff",
 			"prettierd", -- Used to format javascript and typescript code
+			"biome",
 		})
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
