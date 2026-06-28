@@ -52,7 +52,7 @@ theme = TokyoNight Moon
 
 window-padding-x = 4
 window-padding-y = 4
-maximize = true
+# maximize = true
 gtk-titlebar-hide-when-maximized = true
 
 font-family = "FiraCode Nerd Font"
