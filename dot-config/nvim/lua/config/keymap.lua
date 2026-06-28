@@ -114,3 +114,51 @@ map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
 vim.api.nvim_create_user_command("W", "write", {})
+
+-- treesitter textobjects keymaps
+-- select
+vim.keymap.set({ "x", "o" }, "af", function()
+	require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "if", function()
+	require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ac", function()
+	require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ic", function()
+	require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "aa", function()
+	require("nvim-treesitter-textobjects.select").select_textobject("@parameter.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ia", function()
+	require("nvim-treesitter-textobjects.select").select_textobject("@parameter.inner", "textobjects")
+end)
+
+-- swap
+vim.keymap.set("n", "<leader>a", function()
+	require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
+end)
+vim.keymap.set("n", "<leader>A", function()
+	require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner")
+end)
+
+-- move
+-- todo: add keymaps
+-- goto_next_start = {
+-- 	["]m"] = "@function.outer",
+-- 	["]]"] = "@class.outer",
+-- },
+-- goto_next_end = {
+-- 	["]M"] = "@function.outer",
+-- 	["]["] = "@class.outer",
+-- },
+-- goto_previous_start = {
+-- 	["[m"] = "@function.outer",
+-- 	["[["] = "@class.outer",
+-- },
+-- goto_previous_end = {
+-- 	["[M"] = "@function.outer",
+-- 	["[]"] = "@class.outer",
+-- },

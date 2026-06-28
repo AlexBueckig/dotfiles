@@ -1,9 +1,12 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
 		build = ":TSUpdate",
 		branch = "main",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"nvim-treesitter/nvim-treesitter-context",
+		},
 		init = function()
 			local ensureInstalled = {
 				"bash",
@@ -24,7 +27,6 @@ return {
 				"typescript",
 				"xml",
 				"yaml",
-				-- ... your parsers
 			}
 			local alreadyInstalled = require("nvim-treesitter.config").get_installed()
 			local parsersToInstall = vim.iter(ensureInstalled)
@@ -42,62 +44,29 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-		lazy = false,
 		branch = "main",
-		version = "*",
+		init = function()
+			-- Disable entire built-in ftplugin mappings to avoid conflicts.
+			-- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+			-- vim.g.no_plugin_maps = true
+		end,
 		opts = {
 			select = {
 				enable = true,
 				lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-				keymaps = {
-					-- You can use the capture groups defined in textobjects.scm
-					["aa"] = "@parameter.outer",
-					["ia"] = "@parameter.inner",
-					["af"] = "@function.outer",
-					["if"] = "@function.inner",
-					["ac"] = "@class.outer",
-					["ic"] = "@class.inner",
-				},
+				include_surrounding_whitspace = false,
 			},
 			move = {
 				enable = true,
 				set_jumps = true, -- whether to set jumps in the jumplist
-				goto_next_start = {
-					["]m"] = "@function.outer",
-					["]]"] = "@class.outer",
-				},
-				goto_next_end = {
-					["]M"] = "@function.outer",
-					["]["] = "@class.outer",
-				},
-				goto_previous_start = {
-					["[m"] = "@function.outer",
-					["[["] = "@class.outer",
-				},
-				goto_previous_end = {
-					["[M"] = "@function.outer",
-					["[]"] = "@class.outer",
-				},
 			},
 			swap = {
 				enable = true,
-				swap_next = {
-					["<leader>a"] = "@parameter.inner",
-				},
-				swap_previous = {
-					["<leader>A"] = "@parameter.inner",
-				},
 			},
 		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		lazy = false,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
+		opts = {},
 	},
 }
