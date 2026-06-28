@@ -106,7 +106,7 @@ return {
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		local servers = {
-			basedpyright = {
+			pyright = {
 				settings = {
 					python = {
 						disableOrganizeImports = true, -- Using Ruff's import organizer
@@ -121,11 +121,22 @@ return {
 					},
 				},
 			},
-			eslint = {},
+			eslint = {
+				settings = {
+					-- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+					workingDirectories = { mode = "auto" },
+					experimental = {
+						-- allows to use flat config format
+						useFlatConfig = true,
+					},
+				},
+			},
 			bashls = {},
 			lua_ls = {},
 			marksman = {},
-			vtsls = {},
+			vtsls = {
+				filetypes = { "typescript", "typescriptreact" },
+			},
 			cssls = {},
 		}
 
