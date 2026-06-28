@@ -25,7 +25,7 @@ return {
 		-- C-k: Toggle signature help (if signature.enabled = true)
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
-		keymap = { preset = "enter" },
+		keymap = { preset = "default" },
 
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -35,11 +35,23 @@ return {
 
 		-- (Default) Only show the documentation popup when manually triggered
 		completion = {
-			documentation = { auto_show = false },
 			menu = {
+				auto_show = true,
 				draw = {
 					padding = { 0, 1 }, -- padding only on right side
 					columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+				},
+			},
+			documentation = {
+				auto_show = true,
+			},
+			ghost_text = {
+				enabled = false,
+				show_with_menu = false,
+			},
+			accept = {
+				auto_brackets = {
+					enabled = true,
 				},
 			},
 		},
@@ -47,15 +59,28 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "buffer", "snippets" },
+			providers = {
+				lsp = {
+					opts = {
+						tailwind_color_icon = "󱓻",
+					},
+				},
+			},
 		},
-
+		cmdline = {
+			enabled = true,
+			keymap = { preset = "cmdline" },
+			completion = {
+				menu = { auto_show = true },
+			},
+		},
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
 		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
 		-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
 		--
 		-- See the fuzzy documentation for more information
-		fuzzy = { implementation = "prefer_rust_with_warning" },
+		fuzzy = { implementation = "prefer_rust" },
 	},
 	opts_extend = { "sources.default" },
 }

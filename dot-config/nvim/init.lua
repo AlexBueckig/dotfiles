@@ -1,7 +1,7 @@
 require("config.globals")
 require("config.options")
+require("config.commands")
 require("config.keymap")
-require("config.lsp")
 require("config.autocmd")
 require("config.lazy")
 require("config.colorscheme")
