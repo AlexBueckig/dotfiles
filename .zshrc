@@ -82,11 +82,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
-#export PYENV_ROOT="$HOME/.pyenv"
-#[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv init - zsh)"
-
 export EDITOR=nvim
 
 # set PATH so it includes user's private bin if it exists
@@ -124,20 +119,20 @@ activate_venv() {
 
 alias s=activate_venv
 
-PATH=$PATH:/snap/bin:$HOME/.local/bin
+PATH=/snap/bin:$PATH
 
 # Android SDK
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools
-export PATH=$PATH:$ANDROID_SDK_ROOT/build-tools
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+PATH=$ANDROID_SDK_ROOT/emulator:$PATH
+PATH=$ANDROID_SDK_ROOT/tools:$PATH
+PATH=$ANDROID_SDK_ROOT/build-tools:$PATH
+PATH=$ANDROID_SDK_ROOT/tools/bin:$PATH
+PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
 
 # Android Studio
 export ANDROID_STUDIO=$HOME/Code/android-studio
-export PATH=$PATH:$ANDROID_STUDIO
+PATH=$ANDROID_STUDIO:$PATH
 
 export FZF_BUILTIN_TMUX="on"
 
@@ -162,3 +157,7 @@ alias lazypodman='lazydocker'
 # Devpod
 export DEVPOD_DISABLE_TELEMETRY=true
 alias dp=devpod
+
+# opencode
+PATH=$HOME/.opencode/bin:$PATH
+export PATH
