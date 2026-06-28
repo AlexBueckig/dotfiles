@@ -35,14 +35,6 @@
     position x=1280 y=0
 }
 
-output "DP-3" {
-  mode "2560x1440@155.000"
-  position x=0 y=0
-  focus-at-startup
-  scale 1
-}
-
-output "HDMI-A-1" {
-  position x=2560 y=0
-  scale 1
-}
+// available in next release
+// include optional=true "output-custom.kdl"
+include "output-custom.kdl"
