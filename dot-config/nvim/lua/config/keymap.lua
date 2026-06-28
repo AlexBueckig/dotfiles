@@ -49,6 +49,7 @@ map("i", "<Up>", "<C-\\><C-o>gk", { desc = "Navigate up (visual line)" })
 map("n", "<leader>bb", "<C-^>", { desc = "Switch to alternate buffer" })
 map("n", "<leader>bn", ":bnext<cr>", { desc = "Next buffer" })
 map("n", "<leader>bp", ":bprevious<cr>", { desc = "Previous buffer" })
+map("n", "<leader>bd", ":bdelete<cr>", { desc = "Previous buffer" })
 
 -- Ctrl-L redraws the screen by default. Now it will also toggle search highlighting.
 map("n", "<C-l>", ":set hlsearch!<cr><C-l>", { desc = "Toggle search highlighting" })
