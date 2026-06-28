@@ -32,6 +32,7 @@ o.numberwidth = 2
 o.ruler = false
 
 o.signcolumn = "yes"
+o.statuscolumn = "   %C%s%l     "
 o.splitbelow = true
 o.splitright = true
 o.timeoutlen = 400
