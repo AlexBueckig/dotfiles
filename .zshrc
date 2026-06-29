@@ -86,12 +86,12 @@ export EDITOR=nvim
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+    PATH="$PATH:$HOME/bin"
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+    PATH="$PATH:$HOME/.local/bin"
 fi
 
 # Oh-My-Posh setup
@@ -103,7 +103,7 @@ alias vimdiff="nvim -d"
 
 # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+[ -z "$DISABLE_ZOXIDE" ] && eval "$(zoxide init --cmd cd zsh)"
 
 activate_venv() {
   if [ -d .venv/ ]; then
@@ -169,3 +169,10 @@ alias q='pi --model google/gemma-4-12b -p'
 
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/home/alex/.lmstudio/bin"
+# pnpm
+export PNPM_HOME="/home/alex/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

@@ -26,7 +26,6 @@ return {
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 		keymap = { preset = "default" },
-
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- Adjusts spacing to ensure icons are aligned
@@ -35,8 +34,6 @@ return {
 
 		-- (Default) Only show the documentation popup when manually triggered
 		completion = {
-			documentation = { auto_show = false },
-			menu = {
 			menu = {
 				auto_show = true,
 				draw = {
@@ -61,9 +58,6 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
-		},
-
 			default = { "lsp", "path", "buffer", "snippets" },
 			providers = {
 				lsp = {
@@ -85,7 +79,6 @@ return {
 		-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
 		--
 		-- See the fuzzy documentation for more information
-		fuzzy = { implementation = "prefer_rust_with_warning" },
 		fuzzy = { implementation = "prefer_rust" },
 	},
 	opts_extend = { "sources.default" },
