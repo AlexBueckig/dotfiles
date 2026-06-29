@@ -12,28 +12,22 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- enable treesitter
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
-		"bash",
-		"css",
-		"csv",
-		"dockerfile",
-		"go",
-		"html",
-		"htmldjango",
-		"javascript",
-		"javascriptreact",
-		"json",
-		"lua",
-		"make",
-		"markdown",
-		"python",
-		"scss",
-		"tsx",
-		"typescript",
-		"typescriptreact",
-		"xml",
-		"yaml",
+		"*",
 	},
-	callback = function()
-		vim.treesitter.start()
+	callback = function(args)
+		local buf = args.buf
+		local ft = vim.bo[buf].filetype
+
+		local lang = vim.treesitter.language.get_lang(ft)
+		if not lang then
+			return
+		end
+
+		local ok_add = pcall(vim.treesitter.language.add, lang)
+		if not ok_add then
+			return
+		end
+
+		pcall(vim.treesitter.start, buf, lang)
 	end,
 })

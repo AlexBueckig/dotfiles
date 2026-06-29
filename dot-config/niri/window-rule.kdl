@@ -42,6 +42,26 @@ window-rule {
     clip-to-geometry true
 }
 
+/* Apps: blur them all without xray so it looks more realistic. */
+window-rule {
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
+/*
+  Noctalia
+  Disable xray on all our surfaces so it looks more realistic.
+  No need to set blur to 'true' here, it's automatic.
+*/
+layer-rule {
+  match namespace="^noctalia-(bar-main|notification|dock|panel)$"
+  background-effect {
+    xray false
+    //blur false
+  }
+}
 
 // Move noctalia overview wallpaper into backdrop
 layer-rule {

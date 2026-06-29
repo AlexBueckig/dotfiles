@@ -121,6 +121,9 @@ alias s=activate_venv
 
 PATH=/snap/bin:$PATH
 
+# yabridge
+PATH=$HOME/.local/share/yabridge:$PATH
+
 # Android SDK
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
@@ -161,3 +164,8 @@ alias dp=devpod
 # opencode
 PATH=$HOME/.opencode/bin:$PATH
 export PATH
+
+alias q='pi --model google/gemma-4-12b -p'
+
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/home/alex/.lmstudio/bin"

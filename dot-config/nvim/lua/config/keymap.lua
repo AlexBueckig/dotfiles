@@ -1,164 +1,149 @@
 -- keymap
 --------------------------------------------------------------------------------
-local map = vim.keymap.set
 
--- For conciseness
-local opts = { noremap = true, silent = true }
+vim.g.mapleader = " "
 
--- Disable the spacebar key's default behavior in Normal and Visual modes
-map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+vim.keymap.set("x", "p", [["_dP]], { desc = "Paste over selection without losing yanked text" })
+-- vim.keymap.set("v", "p", '"_dP', { desc = "Keep last yanked when pastin" })
 
--- Allow moving the cursor through wrapped lines with j, k
-map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yanking" })
 
--- delete single character without copying into register
-map("n", "x", '"_x', opts)
+vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search highlighting", silent = true })
+vim.keymap.set("n", "<Esc>", ":noh<CR>", { desc = "general clear highlights", silent = true })
 
--- save file
-map("n", "<C-s>", "<cmd> w <CR>", opts)
-
--- save file without auto-formatting
-map("n", "<leader>sn", "<cmd>noautocmd w <CR>", opts)
-
--- Vertical scroll and center
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
-
--- Find and center
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
-
--- Navigation in insert mode
-map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
-map("i", "<C-e>", "<End>", { desc = "move end of line" })
-map("i", "<C-h>", "<Left>", { desc = "move left" })
-map("i", "<C-l>", "<Right>", { desc = "move right" })
-map("i", "<C-j>", "<Down>", { desc = "move down" })
-map("i", "<C-k>", "<Up>", { desc = "move up" })
-
--- better up/down
-map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-
--- Navigating buffers
-map("n", "<leader>bb", "<C-^>", { desc = "Switch to alternate buffer" })
-map("n", "<leader>bn", "<CMD>bnext<CR>", { desc = "Next buffer" })
-map("n", "<leader>bp", "<CMD>bprevious<CR>", { desc = "Previous buffer" })
-map("n", "<S-h>", "<CMD>bprevious<CR>", { desc = "Prev Buffer" })
-map("n", "<S-l>", "<CMD>bnext<CR>", { desc = "Next Buffer" })
-
--- Ctrl-L redraws the screen by default. Now it will also toggle search highlighting.
-map("n", "<C-l>", ":set hlsearch!<cr><C-l>", { desc = "Toggle search highlighting" })
-
--- Diagnostic keymaps
-map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-
-map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
-
--- Comment
-map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
-map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
-
--- window management
-map("n", "<leader>v", "<C-w>v", opts) -- split window vertically
-map("n", "<leader>h", "<C-w>s", opts) -- split window horizontally
-map("n", "<leader>se", "<C-w>=", opts) -- make split windows equal width & height
-map("n", "<leader>xs", ":close<CR>", opts) -- close current split window
-
--- Navigate between splits
-map("n", "<C-k>", ":wincmd k<CR>", opts)
-map("n", "<C-j>", ":wincmd j<CR>", opts)
-map("n", "<C-h>", ":wincmd h<CR>", opts)
-map("n", "<C-l>", ":wincmd l<CR>", opts)
-
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visual selection" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves lines up in visual selection" })
 -- Move text up and down
-map("n", "<A-j>", ":m .+1<CR>==", opts)
-map("n", "<A-k>", ":m .-2<CR>==", opts)
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "move lines down in normal mode" })
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "move lines up in normal mode" })
 
-map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+vim.keymap.set("v", "<", "<gv", { desc = "Unindent and keep selection" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent and keep selection" })
 
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines without moving cursor" })
 
--- Keep last yanked when pasting
-map("v", "p", '"_dP', opts)
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
 
--- filetype detect
-map("n", "<leader>fd", "<CMD>filetype detect<CR>", { desc = "[F]iletype [D]etect" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result cursor centered" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result cursor centered" })
 
--- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+vim.keymap.set(
+	"n",
+	"<leader>s",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replace word cursor is on globally" }
+)
+vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
 
--- commenting
-map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
-map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+vim.keymap.set("n", "<leader>re", "<cmd>restart<cr>", { desc = "Restart config :restart)" })
 
--- lazy
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
-
--- new file
-map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
-
--- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
-map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
-map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
-map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search Result" })
-map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
-map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
-
-vim.api.nvim_create_user_command("W", "write", {})
+-- native undotree
+-- using mbbill/undotree for now
+-- vim.keymap.set("n", "<leader>u", function()
+-- 	vim.cmd.packadd("nvim.undotree")
+-- 	require("undotree").open()
+-- end, { desc = "Toggle Builtin Undotree" })
 
 -- treesitter textobjects keymaps
 -- select
 vim.keymap.set({ "x", "o" }, "af", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
-end)
+end, { desc = "Select around function" })
 vim.keymap.set({ "x", "o" }, "if", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
-end)
+end, { desc = "Select inner function" })
 vim.keymap.set({ "x", "o" }, "ac", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
-end)
+end, { desc = "Select around class" })
 vim.keymap.set({ "x", "o" }, "ic", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
-end)
+end, { desc = "Select inner class" })
 vim.keymap.set({ "x", "o" }, "aa", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@parameter.outer", "textobjects")
-end)
+end, { desc = "Select outer parameter" })
 vim.keymap.set({ "x", "o" }, "ia", function()
 	require("nvim-treesitter-textobjects.select").select_textobject("@parameter.inner", "textobjects")
-end)
+end, { desc = "Select inner parameter" })
 
 -- swap
 vim.keymap.set("n", "<leader>a", function()
 	require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
-end)
+end, { desc = "Swap parameter right" })
 vim.keymap.set("n", "<leader>A", function()
 	require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner")
-end)
+end, { desc = "Swap parameter left" })
 
--- move
--- todo: add keymaps
--- goto_next_start = {
--- 	["]m"] = "@function.outer",
--- 	["]]"] = "@class.outer",
--- },
--- goto_next_end = {
--- 	["]M"] = "@function.outer",
--- 	["]["] = "@class.outer",
--- },
--- goto_previous_start = {
--- 	["[m"] = "@function.outer",
--- 	["[["] = "@class.outer",
--- },
--- goto_previous_end = {
--- 	["[M"] = "@function.outer",
--- 	["[]"] = "@class.outer",
--- },
+vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy package manager" })
+
+vim.keymap.set(
+	{ "n", "v" },
+	"<Space>",
+	"<Nop>",
+	{ desc = "Disable the spacebar key's default behavior in Normal and Visual modes", silent = true }
+)
+
+vim.keymap.set(
+	"n",
+	"k",
+	"v:count == 0 ? 'gk' : 'k'",
+	{ desc = "Move cursor through wrapped lines", expr = true, silent = true }
+)
+vim.keymap.set(
+	"n",
+	"j",
+	"v:count == 0 ? 'gj' : 'j'",
+	{ desc = "Move cursor through wrapped lines", expr = true, silent = true }
+)
+
+vim.keymap.set("n", "x", '"_x', { desc = "Delete single character without copying into register" })
+vim.keymap.set("n", "<C-s>", "<cmd> w <CR>", { desc = "Save file" })
+vim.keymap.set("n", "<leader>sn", "<cmd>noautocmd w <CR>", { desc = "Save file without auto-formatting" })
+
+-- Navigation in insert mode
+vim.keymap.set("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
+vim.keymap.set("i", "<C-e>", "<End>", { desc = "move end of line" })
+vim.keymap.set("i", "<C-h>", "<Left>", { desc = "move left" })
+vim.keymap.set("i", "<C-l>", "<Right>", { desc = "move right" })
+vim.keymap.set("i", "<C-j>", "<Down>", { desc = "move down" })
+vim.keymap.set("i", "<C-k>", "<Up>", { desc = "move up" })
+
+-- Navigating buffers
+vim.keymap.set("n", "<leader>bb", "<C-^>", { desc = "Switch to alternate buffer" })
+vim.keymap.set("n", "<leader>bn", "<CMD>bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bp", "<CMD>bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<S-h>", "<CMD>bprevious<CR>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<S-l>", "<CMD>bnext<CR>", { desc = "Next Buffer" })
+
+vim.keymap.set("n", "<leader>fd", "<CMD>filetype detect<CR>", { desc = "[F]iletype [D]etect" })
+
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { desc = "Navigate split up" })
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { desc = "Navigate split down" })
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { desc = "Navigate split left" })
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { desc = "Navigate split right" })
+
+-- window management
+vim.keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>h", "<C-w>s", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make split equal width and height" })
+vim.keymap.set("n", "<leader>xs", ":close<CR>", { desc = "Close current split window" })
+
+-- ################################################################################################
+-- Diagnostic keymaps
+-- map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+-- map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+-- filetype detect
+
+-- commenting
+-- map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
+-- map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+-- map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
+-- map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+-- map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+-- map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search Result" })
+-- map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
+-- map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })

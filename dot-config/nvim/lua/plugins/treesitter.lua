@@ -28,13 +28,7 @@ return {
 				"xml",
 				"yaml",
 			}
-			local alreadyInstalled = require("nvim-treesitter.config").get_installed()
-			local parsersToInstall = vim.iter(ensureInstalled)
-				:filter(function(parser)
-					return not vim.tbl_contains(alreadyInstalled, parser)
-				end)
-				:totable()
-			require("nvim-treesitter").install(parsersToInstall)
+			require("nvim-treesitter").install(ensureInstalled)
 		end,
 		opts = {
 			sync_install = false,
@@ -45,11 +39,11 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		branch = "main",
-		init = function()
-			-- Disable entire built-in ftplugin mappings to avoid conflicts.
-			-- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
-			-- vim.g.no_plugin_maps = true
-		end,
+		-- init = function()
+		--  Disable entire built-in ftplugin mappings to avoid conflicts.
+		--  See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+		--  vim.g.no_plugin_maps = true
+		-- end,
 		opts = {
 			select = {
 				enable = true,
