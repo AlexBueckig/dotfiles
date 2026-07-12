@@ -105,6 +105,18 @@ alias vimdiff="nvim -d"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
+# FZF
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
+# FZF GIT
+# https://github.com/junegunn/fzf-git.sh
+
+# alias ls="eza"
+
 activate_venv() {
   if [ -d .venv/ ]; then
     source ./.venv/bin/activate
@@ -136,8 +148,6 @@ PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
 # Android Studio
 export ANDROID_STUDIO=$HOME/Code/android-studio
 PATH=$ANDROID_STUDIO:$PATH
-
-export FZF_BUILTIN_TMUX="on"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
