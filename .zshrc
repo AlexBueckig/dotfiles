@@ -103,7 +103,7 @@ alias vimdiff="nvim -d"
 
 # Shell integrations
 eval "$(fzf --zsh)"
-[ -z "$DISABLE_ZOXIDE" ] && eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
 
 activate_venv() {
   if [ -d .venv/ ]; then
