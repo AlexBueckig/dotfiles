@@ -83,6 +83,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export EDITOR=nvim
+export MANPAGER="bat -plman"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -115,7 +116,7 @@ export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4
 # FZF GIT
 # https://github.com/junegunn/fzf-git.sh
 
-# alias ls="eza"
+alias ls="eza"
 
 activate_venv() {
   if [ -d .venv/ ]; then
@@ -186,3 +187,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
+
+# Pi
+export PATH="/home/alex/.local/share/pi-node/node-v22.23.1-linux-x64/bin:$PATH"
