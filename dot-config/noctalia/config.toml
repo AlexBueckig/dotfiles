@@ -1,0 +1,72 @@
+[theme]
+mode = "dark"
+builtin = "Tokyo-Night"
+
+[bar.main]
+position = "top"
+margin_ends = 0
+radius = 0
+concave_edge_corners = false
+background_opacity = 0.5
+shadow = false
+widget_spacing = 16
+
+start = ["workspaces", "active_window"]
+end = ["cpu", "temp", "ram", "gpu_temp","tray", "notifications", "battery", "network",  "volume", "session"]
+
+[shell]
+language = "en"
+
+[shell.panel]
+open_near_click_control_center = true
+
+[system.monitor]
+gpu_poll_seconds = 5.0
+
+[widget.cpu]
+show_label = false
+
+[widget.temp]
+show_label = false
+
+[widget.ram]
+show_label = false
+
+[widget.gpu_temp]
+type = "sysmon"
+stat = "gpu_temp"
+show_label = false
+
+[widget.clock]
+format = "%d. %b %H:%M"
+
+[widget.workspaces]
+display = "none"
+enable_scroll = false
+hide_when_empty = true
+
+[widget.network]
+show_label = false
+
+[widget.tray]
+drawer = true
+
+[wallpaper]
+directory = "/usr/share/backgrounds/"
+
+[wallpaper.default]
+path = "/usr/share/backgrounds/f44/default/f44-01-day.jxl"
+
+[weather]
+effects = false
+
+[brightness]
+enable_ddcutil = true
+sync_all_monitors = true
+
+[backdrop]
+enabled        = true
+blur_intensity = 0.5    # 0.0 = no blur, 1.0 = maximum blur
+tint_intensity = 0.3    # 0.0 = no tint, 1.0 = fully opaque tint
+
+[control_center]
