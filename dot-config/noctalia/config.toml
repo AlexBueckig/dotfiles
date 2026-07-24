@@ -2,6 +2,9 @@
 mode = "dark"
 builtin = "Tokyo-Night"
 
+[bar]
+order = ["main"]
+
 [bar.main]
 position = "top"
 margin_ends = 0
@@ -13,7 +16,7 @@ widget_spacing = 12
 font_weight = 600
 
 start = ["workspaces", "active_window"]
-end = ["cpu", "temp", "ram", "gpu_temp","tray", "notifications", "battery", "network",  "volume", "settings", "session"]
+end = ["sysmon", "tray", "notifications", "battery", "network",  "volume", "settings", "session"]
 
 [shell]
 language = "en"
@@ -33,18 +36,7 @@ session_position = "center"
 [system.monitor]
 gpu_poll_seconds = 5.0
 
-[widget.cpu]
-show_label = false
-
-[widget.temp]
-show_label = false
-
-[widget.ram]
-show_label = false
-
-[widget.gpu_temp]
-type = "sysmon"
-stat = "gpu_temp"
+[widget.sysmon]
 show_label = false
 
 [widget.clock]
@@ -54,6 +46,9 @@ format = "%d. %b %H:%M"
 display = "none"
 enable_scroll = false
 hide_when_empty = true
+
+[widget.active_window]
+font_weight = 500
 
 [widget.network]
 show_label = false
