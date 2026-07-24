@@ -61,12 +61,6 @@ show_label = false
 [widget.tray]
 drawer = true
 
-# [wallpaper]
-# directory = "/usr/share/backgrounds/"
-#
-# [wallpaper.default]
-# path = "/usr/share/backgrounds/f44/default/f44-01-day.jxl"
-
 [weather]
 effects = false
 
