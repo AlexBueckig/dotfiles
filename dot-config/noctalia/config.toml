@@ -19,8 +19,15 @@ language = "en"
 
 [shell.panel]
 transparency = "solid"
-open_near_click_control_center = true
+
 control_center_placement = "floating"
+open_near_click_control_center = true
+
+wallpaper_placement = "floating"
+wallpaper_position = "center"
+
+session_placement = "floating"
+session_position = "center"
 
 [system.monitor]
 gpu_poll_seconds = 5.0
