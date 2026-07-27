@@ -16,7 +16,7 @@ widget_spacing = 12
 font_weight = 600
 
 start = ["workspaces", "active_window"]
-end = ["sysmon", "tray", "notifications", "battery", "network",  "volume", "settings", "session"]
+end = ["sysmon", "tray", "notifications",  "network",  "volume","battery", "settings", "session"]
 
 [shell]
 language = "en"
