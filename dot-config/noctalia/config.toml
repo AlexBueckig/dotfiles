@@ -19,10 +19,10 @@ start = ["workspaces", "active_window"]
 end = ["sysmon", "tray", "notifications",  "network",  "volume","battery", "settings", "session"]
 
 [shell]
-language = "en"
+lang = "en"
 
 [shell.panel]
-transparency = "solid"
+transparency_mode = "solid"
 
 control_center_placement = "floating"
 open_near_click_control_center = true
@@ -44,7 +44,6 @@ format = "%d. %b %H:%M"
 
 [widget.workspaces]
 display = "none"
-enable_scroll = false
 hide_when_empty = true
 
 [widget.active_window]
