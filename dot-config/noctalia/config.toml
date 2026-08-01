@@ -22,7 +22,7 @@ end = ["sysmon", "tray", "notifications",  "network",  "volume","battery", "sett
 lang = "en"
 
 [shell.panel]
-transparency_mode = "solid"
+transparency_mode = "soft"
 
 control_center_placement = "floating"
 open_near_click_control_center = true
