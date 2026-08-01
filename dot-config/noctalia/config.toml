@@ -72,9 +72,9 @@ lock_keys = false
 media = false
 
 [shell.launcher.dmenu.entry.commands]
-command = "printf 'DNF Upgrade\tRun dnf upgrade --refresh\n'"
+command = "printf 'DNF Upgrade / Flatpak update\tRun \"dnf upgrade --refresh\" and \"flatpak update\"\n'"
 label = "Commands"
 prefix = "cmd"
 glyph = "terminal"
 global = false
-exec = "foot -e bash -lc 'pkexec dnf upgrade --refresh; read -rp \"Press Enter to close...\"'"
+exec = "ghostty -e bash -lc 'pkexec dnf upgrade --refresh; flatpak update; read -rp \"Press Enter to close...\"'"
