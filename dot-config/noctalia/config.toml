@@ -69,6 +69,7 @@ tint_intensity = 0.3    # 0.0 = no tint, 1.0 = fully opaque tint
 
 [osd.kinds]
 lock_keys = false
+media = false
 
 [shell.launcher.dmenu.entry.commands]
 command = "printf 'DNF Upgrade\tRun dnf upgrade --refresh\n'"
