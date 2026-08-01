@@ -54,6 +54,7 @@ show_label = false
 
 [widget.tray]
 drawer = true
+drawer_columns = 5
 
 [weather]
 effects = false
