@@ -37,13 +37,13 @@ session_position = "center"
 gpu_poll_seconds = 5.0
 
 [widget.sysmon]
-show_label = false
+show_value = false
 
 [widget.clock]
 format = "%d. %b %H:%M"
 
 [widget.workspaces]
-display = "none"
+show_labels = false
 hide_when_empty = true
 
 [widget.active_window]
