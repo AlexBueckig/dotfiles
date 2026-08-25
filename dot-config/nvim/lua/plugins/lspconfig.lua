@@ -118,6 +118,10 @@ local plugin = {
 					})
 
 					vim.diagnostic.config({
+						float = {
+							max_width = 80,
+							wrap = true,
+						},
 						underline = { severity = vim.diagnostic.severity.ERROR },
 						signs = {
 							text = {
