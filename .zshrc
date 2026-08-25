@@ -172,10 +172,6 @@ alias lazypodman='lazydocker'
 export DEVPOD_DISABLE_TELEMETRY=true
 alias dp=devpod
 
-# opencode
-PATH=$HOME/.opencode/bin:$PATH
-export PATH
-
 alias q='pi --model google/gemma-4-12b -p'
 
 # Added by LM Studio CLI tool (lms)
