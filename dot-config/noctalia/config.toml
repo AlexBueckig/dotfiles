@@ -59,6 +59,9 @@ drawer_columns = 5
 [weather]
 effects = false
 
+[control_center.calendar]
+show_week_numbers = true
+
 [brightness]
 enable_ddcutil = true
 sync_all_monitors = true
