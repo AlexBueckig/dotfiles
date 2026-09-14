@@ -19,6 +19,7 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="zen" title="^Picture-in-Picture$"
+    match app-id="helium" title="^Picture-in-Picture$"
     match app-id=r#"vivaldi$"# title="^Picture-in-Picture$"
     open-floating true
 }
