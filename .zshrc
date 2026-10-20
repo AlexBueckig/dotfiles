@@ -1,4 +1,7 @@
 ### Added by Zinit's installer
+declare -A ZINIT
+ZINIT[NO_ALIASES]=1
+
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
@@ -26,6 +29,7 @@ zinit snippet OMZP::command-not-found
 # Use modern completion system
 autoload -Uz compinit
 compinit
+
 
 zinit cdreplay -q
 
@@ -154,7 +158,7 @@ function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
+		builtin z -- "$cwd"
 	fi
 	rm -f -- "$tmp"
 }
@@ -168,6 +172,9 @@ alias lzd='lazydocker'
 alias lzp='lazydocker'
 alias lazypodman='lazydocker'
 
+# lazygit
+alias lg='lazygit'
+
 # Devpod
 export DEVPOD_DISABLE_TELEMETRY=true
 alias dp=devpod
@@ -176,6 +183,7 @@ alias q='pi --model google/gemma-4-12b -p'
 
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/home/alex/.lmstudio/bin"
+
 # pnpm
 export PNPM_HOME="/home/alex/.local/share/pnpm"
 case ":$PATH:" in
@@ -183,6 +191,3 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
-
-# Pi
-export PATH="/home/alex/.local/share/pi-node/node-v22.23.1-linux-x64/bin:$PATH"
