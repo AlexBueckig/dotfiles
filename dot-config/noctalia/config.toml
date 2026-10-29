@@ -20,6 +20,7 @@ end = ["sysmon", "tray", "notifications",  "network",  "volume","battery", "sett
 
 [shell]
 lang = "en"
+polkit_agent = true
 
 [shell.panel]
 transparency_mode = "soft"
